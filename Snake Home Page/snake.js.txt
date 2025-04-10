@@ -1,0 +1,30 @@
+const snake = document.querySelector('.snake');
+const segments = document.querySelectorAll('.segment');
+let mouseX = 0;
+let mouseY = 0;
+let posX = 0;
+let posY = 0;
+
+// Track mouse movement
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// Smooth snake movement
+function moveSnake() {
+    segments.forEach((segment, index) => {
+        setTimeout(() => {
+            const prevSegment = segments[index - 1] || snake;
+            const prevX = parseInt(prevSegment.style.left) || mouseX;
+            const prevY = parseInt(prevSegment.style.top) || mouseY;
+            
+            segment.style.left = `${prevX}px`;
+            segment.style.top = `${prevY}px`;
+        }, index * 100);
+    });
+
+    requestAnimationFrame(moveSnake);
+}
+
+moveSnake();

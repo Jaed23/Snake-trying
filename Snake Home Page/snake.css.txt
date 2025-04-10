@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: white;
+    overflow: hidden;
+    cursor: none;
+}
+
+.snake {
+    position: absolute;
+    display: flex;
+    gap: 5px;
+}
+
+.segment {
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+    transition: transform 0.2s ease-out;
+}
